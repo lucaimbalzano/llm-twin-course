@@ -41,3 +41,23 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+
+
+"""
+The feature pipeline transforms your data into features & labels, which are stored and versioned in a feature store. The feature store will act as the central repository of your features. That means that features can be accessed and shared only through the feature store.
+
+
+System design of the feature pipeline
+→ CDC adds any change made to the Mongo DB to the queue (read more in Lesson 3).
+→ the RabbitMQ queue stores all the events until they are processed.
+→ The Bytewax streaming engine cleans, chunks, and embeds the data.
+→ A streaming engine works naturally with a queue-based system.
+→ The data is uploaded to a Qdrant vector DB on the fly
+
+Why is this powerful?
+- The data is processed in real-time.
+- Out-of-the-box recovery system: If the streaming pipeline fails to process, a message will be added back to the queue
+- Lightweight: No need for any diffs between databases or batching too many records
+- No I/O bottlenecks on the source database
+"""

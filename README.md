@@ -8,7 +8,7 @@
 </br>
 
 <p align="center">
-  <img src="media/cover.png" alt="Your image description">
+  <!-- <img src="media/cover.png" alt="Your image description"> -->
 </p>
 
 ## 🎯 What you'll learn

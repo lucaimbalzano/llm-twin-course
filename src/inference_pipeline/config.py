@@ -55,3 +55,8 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+
+"""
+ The inference pipeline uses a given version of the features from the feature store and downloads a specific version of the model from the model registry. Its final goal is to output the predictions to a client.
+"""

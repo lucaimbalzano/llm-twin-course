@@ -27,3 +27,8 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
+
+
+"""
+The training pipeline ingests a specific version of the features & labels from the feature store and outputs the trained model weights, which are stored and versioned inside a model registry. The models will be accessed and shared only through the model registry.
+"""

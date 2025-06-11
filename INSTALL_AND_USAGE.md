@@ -128,6 +128,8 @@ make install
 After installing the dependencies into the Poetry virtual environment, you can activate your virtual environment into your current CLI by running:
 ```bash
 poetry shell
+or
+eval $(poetry env activate)
 ```
 
 ## Set up the data infrastructure
