@@ -91,6 +91,7 @@ class VectorRetriever:
 
     @opik.track(name="retriever.retrieve_top_k")
     def retrieve_top_k(self, k: int, to_expand_to_n_queries: int) -> list:
+        # Generate multiple queries using the query expander
         generated_queries = self._query_expander.generate_response(
             self.query, to_expand_to_n=to_expand_to_n_queries
         )
@@ -99,6 +100,7 @@ class VectorRetriever:
             num_queries=len(generated_queries),
         )
 
+        # Use the self-query chain to search for metadata
         author_id = self._metadata_extractor.generate_response(self.query)
         if author_id:
             logger.info(
@@ -108,15 +110,19 @@ class VectorRetriever:
         else:
             logger.warning("Did not found any author data in the user's prompt.")
 
+        # Run each query on a different thread to reduce network I/O overhead
         with concurrent.futures.ThreadPoolExecutor() as executor:
             search_tasks = [
                 executor.submit(self._search_single_query, query, author_id, k)
                 for query in generated_queries
             ]
 
+            # Wait for all threads
             hits = [
                 task.result() for task in concurrent.futures.as_completed(search_tasks)
             ]
+
+            # Combine the results
             hits = lib.flatten(hits)
 
         logger.info("All documents retrieved successfully.", num_documents=len(hits))
