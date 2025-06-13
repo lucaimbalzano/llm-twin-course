@@ -29,9 +29,9 @@ from core import get_logger
 from core.db.qdrant import QdrantDatabaseConnector
 from sklearn.model_selection import train_test_split
 
-from .chunk_documents import chunk_documents
-from .file_handler import FileHandler
-from .llm_communication import GptCommunicator
+from src.feature_pipeline.generate_dataset.chunk_documents import chunk_documents
+from src.feature_pipeline.generate_dataset.file_handler import FileHandler
+from src.feature_pipeline.generate_dataset.llm_communication import GptCommunicator
 
 logger = get_logger(__name__)
 

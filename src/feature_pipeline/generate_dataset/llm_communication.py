@@ -1,7 +1,7 @@
 import json
 
-from config import settings
-from core import get_logger
+from src.feature_pipeline.config import settings
+from src.core import get_logger
 from openai import OpenAI
 
 MAX_LENGTH = 16384

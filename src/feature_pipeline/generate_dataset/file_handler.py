@@ -1,6 +1,6 @@
 import json
 
-from generate_dataset.exceptions import JSONDecodeError
+from .exceptions import JSONDecodeError
 
 
 class FileHandler:
