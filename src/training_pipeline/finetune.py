@@ -97,8 +97,8 @@ class DatasetClient:
 
 def load_model(
     model_name: str,
-    max_seq_length: int,
-    load_in_4bit: bool,
+    max_seq_length: int, # Maximum sequence length for input tokens
+    load_in_4bit: bool, # Boolean flag for 4-bit quantization
     lora_rank: int,
     lora_alpha: int,
     lora_dropout: float,

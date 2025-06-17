@@ -177,3 +177,4 @@ rabbitmq
 
 # Credentials
 sagemaker_execution_role.json
+.sagemaker_execution_role*

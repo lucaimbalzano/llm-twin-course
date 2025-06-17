@@ -50,6 +50,7 @@ local-test-retriever: # Test the RAG retriever using your Poetry env
 	cd src/feature_pipeline && poetry run python -m retriever
 
 local-generate-instruct-dataset: # Generate the fine-tuning instruct dataset using your Poetry env.
+# because you are running it externally you need to pull all dependencies: i suggest to use this command  $: python3 -m venv .venv   
 	cd src/feature_pipeline && poetry run python -m generate_dataset.generate
 
 # ===================================================
